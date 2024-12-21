@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+spring:
+  application:
+    name: admin-service
+  # DataSource configuration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres}
+  #    password: ${DB_PASSWORD:MAN@080915}
+  #    url: ${DB_URL:jdbc:postgresql://localhost:5432/TopMarketKZDB}
+  # Hibernate configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+    org.springframework.security: DEBUG
+
+  # JWT configuration
+token:
+  signing:
+    key: 53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855
+
+#Swagger conf
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

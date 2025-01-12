@@ -10,13 +10,13 @@ import lombok.experimental.FieldNameConstants;
 import java.util.Date;
 
 @Entity
-@Table(name = "messages")
+@Table(name = "content_body_lang")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @FieldNameConstants
-public class Message {
+public class ContentBodyLang {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,21 +24,14 @@ public class Message {
     private Long id;
 
     @Column(name = "text")
-    private String messageText;
+    private String title;
+
+    @Column(name = "content")
+    private String content;
 
     @Column(name = "created_date")
     private Date createdDate;
 
     @Column(name = "updated_date")
     private Date updatedDate;
-
-    @Column(name = "account_name")
-    private String accountName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appeal_id", insertable = false, updatable = false)
-    private Appeal appeal;
-
-    @Column(name = "appeal_id", nullable = false)
-    private Long appealId;
 }
